@@ -1,6 +1,6 @@
 # LSTM Split-Test Replication
 
-Code-only package to rebuild LSTM case inputs and train/evaluate the gap-filling models from the Paper 1A experiments (C0–C3).
+Code-only package to rebuild LSTM case inputs and train/evaluate the gap-filling models from the Paper 1A experiments (C0–C3). Prebuilt inputs, outputs and other datasets for replication are available at https://doi.org/10.5281/zenodo.23717919
 
 Trained weights and ready-made `Inputs/` / `Outputs/` are **not** included. Place the required datasets under `Datasets/`, rebuild case folders, then train.
 
@@ -116,7 +116,7 @@ sbatch lstm_cases.sh
 Outputs land under `Models/LSTM_SplitTest/Outputs/{case_tag}/`.
 
 ## What is intentionally omitted
-
+Prebuilt inputs and outputs are hosted at https://doi.org/10.5281/zenodo.23717919 
 - Prebuilt `Inputs/` and `Outputs/` (large; regenerable)
 - Plotting / table post-process scripts
 - C4 single-site pipeline (`15_c4_single_site.py` → separate `LSTM_SingleSite` tree)
