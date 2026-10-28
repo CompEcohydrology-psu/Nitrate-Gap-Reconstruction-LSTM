@@ -13,9 +13,6 @@ The HydroDL-derived components (`Models/LSTM_SplitTest/model.py`, `dropout.py`, 
 The nitrate reconstruction experiments, donor-selection strategies, data-processing workflows, and evaluation procedures were developed for this research project.
 
 
-
-**Source note:** The adapted classes (`CudnnLstm`, `DropMask`, `createMask`) match classic **hydroDL**, not [hydrodl2](https://github.com/mhpi/hydroDL2).
-
 ## Layout
 
 ```
