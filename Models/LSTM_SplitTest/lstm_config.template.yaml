@@ -1,0 +1,173 @@
+# Template for Paper_1A LSTM training. Paths, forcings, attributes, and norms are
+# filled by Scripts/13_train_test_split.write_lstm_config from the case train
+# parquet (BASE / REDUCED / ALL) and attribute_117_V1.parquet.
+# Edit hyperparameters here.
+
+randomseed:
+- 0
+# Optional: slower GPU, more reproducible (still not 100% on all CUDA ops)
+cudnn_deterministic: false
+Action:
+- Train
+- Test_Gap
+eval_gap_truth_all_saved: true
+device: cuda
+forcing_path_train: forcing_train.parquet
+forcing_path_test: forcing_test.parquet
+attr_path: ../../../Datasets/attribute_117_V1.parquet
+output_model: RUN_PLACEHOLDER
+NN_model_name: LSTM
+
+normalization:
+  targets:
+    nitrate_mg_l: log1p
+  forcings:
+    discharge_cfs: log1p
+    discharge_interpolated: none
+    pr: log1p
+    tmmx: zscore
+    tmmn: zscore
+    sph: zscore
+    srad: zscore
+    Corn_sqkm: zscore
+    Soybean_sqkm: zscore
+    Other_Agriculture_sqkm: zscore
+    Forest_sqkm: zscore
+    Urban_sqkm: zscore
+    Other_Unclassified_sqkm: zscore
+    Agriculture_Fertilizer: zscore
+    Atmospheric_Oxidized: zscore
+    Atmospheric_Reduced: zscore
+    Domestic_Fertilizer: log1p
+    Human: log1p
+    Lvst_Sum: log1p
+    Temperature: zscore
+    Dissolved_Oxygen: zscore
+    pH: zscore
+    Specific_Conductance: log1p
+    Turbidity: log1p
+  scope:
+    targets:
+      nitrate_mg_l: per_site
+    forcings:
+      discharge_cfs: per_site
+      pr: global
+      tmmn: global
+      tmmx: global
+      sph: global
+      srad: global
+      Corn_sqkm: global
+      Soybean_sqkm: global
+      Other_Agriculture_sqkm: global
+      Forest_sqkm: global
+      Urban_sqkm: global
+      Other_Unclassified_sqkm: global
+      Agriculture_Fertilizer: global
+      Atmospheric_Oxidized: global
+      Atmospheric_Reduced: global
+      Domestic_Fertilizer: global
+      Human: global
+      Lvst_Sum: global
+      Temperature: per_site
+      Dissolved_Oxygen: per_site
+      pH: per_site
+      Specific_Conductance: per_site
+      Turbidity: per_site
+
+warm_up: 30
+rho: 180
+batch_size: 89
+EPOCHS: 2500
+hidden_size: 256
+LSTM_layer: 1
+dropout: 0.2
+saveEpoch: 500
+# Write train_epoch_log.csv every N epochs (loss; optional median NSE via --log-eval-nse).
+logEpoch: 10
+EPOCH_testing: 2500
+no_basins: 117
+optimizer_lr: 0.001
+optimizer_weight_decay: 0.001
+grad_clip_norm: 1.0
+
+# Placeholder list; overwritten per case from train parquet columns
+forcings:
+- discharge_cfs
+- discharge_interpolated
+- pr
+- tmmn
+- tmmx
+- sph
+- srad
+- Human
+- Atmospheric_Oxidized
+- Atmospheric_Reduced
+- Agriculture_Fertilizer
+- Lvst_Sum
+- Domestic_Fertilizer
+- Corn_sqkm
+- Soybean_sqkm
+- Other_Agriculture_sqkm
+- Forest_sqkm
+- Urban_sqkm
+- Other_Unclassified_sqkm
+
+# Placeholder list; overwritten from attribute_117_V1.parquet
+attributes:
+- basinatlas_pre_mm_syr
+- basinatlas_tmp_dc_smx
+- basinatlas_tmp_dc_smn
+- basinatlas_pet_mm_syr
+- basinatlas_aet_mm_syr
+- basinatlas_ari_ix_sav
+- basinatlas_snw_pc_smx
+- basinatlas_area
+- basinatlas_ele_mt_sav
+- basinatlas_slp_dg_sav
+- basinatlas_sgr_dk_sav
+- basinatlas_swc_pc_syr
+- basinatlas_soc_th_sav
+- basinatlas_slt_pc_sav
+- basinatlas_snd_pc_sav
+- basinatlas_ero_kh_sav
+- basinatlas_gwt_cm_sav
+- basinatlas_kar_pc_sse
+- basinatlas_for_pc_sse
+- basinatlas_wet_pc_sg2
+- basinatlas_lka_pc_sse
+- basinatlas_crp_pc_sse
+- basinatlas_pst_pc_sse
+- basinatlas_ire_pc_sse
+- basinatlas_cly_pc_sav
+- basinatlas_urb_pc_sse
+- basinatlas_ppd_pk_sav
+- basinatlas_rdd_mk_sav
+- tile_drain_fraction
+- DTW
+- NO3_DOM
+- NO3_PUB
+- TRANSM
+- UNSAT_TT
+- WCON
+
+loss_function: Huber
+loss_function_weights:
+  huber_delta: 1.0
+  nse_eps: 1e-6
+  rmse_alpha: 0.5
+  rmse_beta: 1e-6
+
+targets:
+- nitrate_mg_l
+
+tRange:
+- 20080101
+- 20260405
+t_train:
+- 20080101
+- 20260405
+t_test:
+- 20080101
+- 20260405
+
+D_N_P_path: D_N_P.xlsx

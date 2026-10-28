@@ -1,0 +1,21 @@
+# Data and run artifacts
+Datasets/*
+!Datasets/README.md
+Models/LSTM_SplitTest/Inputs/
+Models/LSTM_SplitTest/Outputs/
+Models/LSTM_SplitTest/logs/
+Models/Similarity/
+Similarity/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Logs / notebooks / IDE
+*.log
+.ipynb_checkpoints/
+.vscode/
+.idea/
