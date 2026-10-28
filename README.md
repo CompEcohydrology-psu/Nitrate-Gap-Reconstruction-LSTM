@@ -4,10 +4,25 @@ Code-only package to rebuild LSTM case inputs and train/evaluate the gap-filling
 
 Trained weights and ready-made `Inputs/` / `Outputs/` are **not** included. Place the required datasets under `Datasets/`, rebuild case folders, then train.
 
+## Code Attribution and Licensing
+
+This repository implements a multi-site LSTM framework for reconstructing missing stream nitrate concentrations. The LSTM architecture and selected training components are adapted from **HydroDL** ([mhpi/hydroDL](https://github.com/mhpi/hydroDL)), developed by the Multi-scale Hydrology, Processes and Intelligence (MHPI) research group at The Pennsylvania State University.
+
+The HydroDL-derived components (`Models/LSTM_SplitTest/model.py`, `dropout.py`, and `train_functions.py`) are subject to the original HydroDL Non-Commercial Software License Agreement. The original copyright notice and license terms are retained in `THIRD_PARTY_LICENSES/hydroDL-LICENSE.txt`.
+
+The nitrate reconstruction experiments, donor-selection strategies, data-processing workflows, and evaluation procedures were developed for this research project.
+
+See `LICENSE` for how HydroDL-derived code and original contributions are treated. Confirm the final license for original components with your advisor / PSU OSPO before using this repository as the official WRR manuscript code archive.
+
+**Source note:** The adapted classes (`CudnnLstm`, `DropMask`, `createMask`) match classic **hydroDL**, not [hydrodl2](https://github.com/mhpi/hydroDL2).
+
 ## Layout
 
 ```
 LSTM_Replication/
+  LICENSE
+  THIRD_PARTY_LICENSES/
+    hydroDL-LICENSE.txt
   Datasets/                  # you provide parquets (see below)
   Models/LSTM_SplitTest/     # trainer + config template
   Scripts/                   # rebuild Inputs/
@@ -102,4 +117,11 @@ sbatch lstm_cases.sh
 ```
 
 Outputs land under `Models/LSTM_SplitTest/Outputs/{case_tag}/`.
+
+## What is intentionally omitted
+
+- Prebuilt `Inputs/` and `Outputs/` (large; regenerable)
+- Plotting / table post-process scripts
+- C4 single-site pipeline (`15_c4_single_site.py` → separate `LSTM_SingleSite` tree)
+- Upstream raw data builders (`Scripts/01`–`11`)
 

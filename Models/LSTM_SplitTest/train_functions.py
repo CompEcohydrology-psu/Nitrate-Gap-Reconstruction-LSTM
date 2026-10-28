@@ -1,4 +1,9 @@
-"""Sampling setup and model create/train helpers."""
+"""Sampling setup and model create/train helpers.
+
+Training helpers adapted from HydroDL (https://github.com/mhpi/hydroDL).
+Copyright (c) 2020, The Pennsylvania State University ("PSU").
+See THIRD_PARTY_LICENSES/hydroDL-LICENSE.txt (Non-Commercial).
+"""
 
 from pathlib import Path
 import torch.nn

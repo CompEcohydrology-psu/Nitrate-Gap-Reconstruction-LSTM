@@ -1,4 +1,9 @@
-"""CudnnLstm and LSTM model definitions."""
+"""CudnnLstm and LSTM model definitions.
+
+Adapted from HydroDL (https://github.com/mhpi/hydroDL).
+Copyright (c) 2020, The Pennsylvania State University ("PSU").
+See THIRD_PARTY_LICENSES/hydroDL-LICENSE.txt (Non-Commercial).
+"""
 
 import torch
 import torch.nn as nn

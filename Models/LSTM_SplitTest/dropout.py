@@ -1,4 +1,9 @@
-"""Dropout mask helpers for CudnnLstm."""
+"""Dropout mask helpers for CudnnLstm.
+
+Adapted from HydroDL (https://github.com/mhpi/hydroDL).
+Copyright (c) 2020, The Pennsylvania State University ("PSU").
+See THIRD_PARTY_LICENSES/hydroDL-LICENSE.txt (Non-Commercial).
+"""
 
 import torch
 import torch.nn
