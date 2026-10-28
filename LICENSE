@@ -34,9 +34,7 @@ project.
 A final permissive license (for example BSD 3-Clause) for those original
 components has not been applied as a blanket repository license, because it
 would conflict with HydroDL's non-commercial terms for the adapted files.
-Confirm the licensing of original contributions with your advisor and/or the
-Penn State Open Source Program Office before treating this repository as the
-official WRR manuscript code archive.
+
 
 Until that decision is recorded here, original contributions are provided for
 non-commercial research use consistent with the accompanying manuscript, with
