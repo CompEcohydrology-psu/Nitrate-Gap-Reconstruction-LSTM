@@ -12,7 +12,7 @@ The HydroDL-derived components (`Models/LSTM_SplitTest/model.py`, `dropout.py`, 
 
 The nitrate reconstruction experiments, donor-selection strategies, data-processing workflows, and evaluation procedures were developed for this research project.
 
-See `LICENSE` for how HydroDL-derived code and original contributions are treated. Confirm the final license for original components with your advisor / PSU OSPO before using this repository as the official WRR manuscript code archive.
+
 
 **Source note:** The adapted classes (`CudnnLstm`, `DropMask`, `createMask`) match classic **hydroDL**, not [hydrodl2](https://github.com/mhpi/hydroDL2).
 
